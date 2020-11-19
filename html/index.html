@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>System Login</title>
+        <link rel="stylesheet" href="style.css"/>
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+        <link rel="manifest" href="favicon/site.webmanifest">
+        <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+
+    </head>
+
+    <body>
+        <div id="login_div" class="main-div">
+            <h3 style="text-align:center">Classroom Schedule System</h3>
+            <h4>Login</h4>
+            <input type="email" placeholder="Enter your institutional mail", id="email_acc"/>
+            <input type="password" placeholder="Enter your password", id="pass_acc"/>
+            <button onclick="login()">Login</button>
+        </div>
+
+        <div id="user_div" class="loggedin-div">                                      
+            <h3>Welcome User</h3>                                                       
+            <p id="user_text">Welcome to Firebase web login Example. You're currently logged in.</p>
+            <button onclick="logout()">Logout</button>                                  
+        </div>
+
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+
+        <script>
+          // Your web app's Firebase configuration
+          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+          var firebaseConfig = {
+            apiKey: "AIzaSyBY-ldqoc5uJwftHF9wVLzLyt8JhMzVjrk",
+            authDomain: "classroom-assignments-52a14.firebaseapp.com",
+            databaseURL: "https://classroom-assignments-52a14.firebaseio.com",
+            projectId: "classroom-assignments-52a14",
+            storageBucket: "classroom-assignments-52a14.appspot.com",
+            messagingSenderId: "523734524972",
+            appId: "1:523734524972:web:b3529a502ed51e66d35d89",
+            measurementId: "G-N3WC3LYQQG"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          firebase.analytics();
+        </script>
+        <script src="index.js"></script>
+    </body>
+</html>
