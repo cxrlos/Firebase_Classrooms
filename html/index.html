@@ -25,15 +25,24 @@
 
         <div id="user_div" class="loggedin-div">                                      
             <h3>Welcome User</h3>                                                       
-            <p id="user_text">Welcome to Firebase web login Example. You're currently logged in.</p>
+            <p id="user_text"></p>
+            <table style="width:100%" id="ex-table">
+                <tr id="tr">
+                <th>ID:</th>
+                <th>Max Capacity:</th>
+                <th>Building:</th>
+                <th>Floor:</th>
+            </table>
             <button onclick="logout()">Logout</button>                                  
         </div>
 
 
+        <script src="../deps//jquery-3.5.1.min.js"></script>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
 
         <script>
           // Your web app's Firebase configuration
