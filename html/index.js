@@ -2,11 +2,10 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         document.getElementById("user_div").style.display = "block";
         document.getElementById("login_div").style.display = "none";
-
+        showClassroomTable();
     } else {
         document.getElementById("user_div").style.display = "none";
         document.getElementById("login_div").style.display = "block";
-        showClassroomTable();
    }
 
     var user = firebase.auth().currentUser;
