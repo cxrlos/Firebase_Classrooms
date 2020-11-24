@@ -27,12 +27,10 @@
         <div id="user_div" class="loggedin-div">                                      
             <h3>Welcome User</h3>                                                       
             <p id="user_text"></p>
-            <table class="container" style="width:100%" id="ex-table">
-                <tr id="tr">
-                <th>Classroom</th>
-                <th>Maximum Capacity</th>
-                <th>Building</th>
-                <th>Floor</th>
+            <table class="container" style="width:100%" id="ex-table-classrooms">
+            </table>
+            <table class="container" style="width:100%" id="ex-table-sessions">
+                <button onclick="showClassroomTable()">Go Back</button>
             </table>
             <button onclick="logout()">Logout</button>                                  
         </div>
