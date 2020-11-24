@@ -1,3 +1,10 @@
+var classroomsDict = {
+    1: "This classroom is a traditional classroom. It has one projector that works through VGA and HDMI connections.",
+    2: "This classroom is a Tec21 equiped classroom. It has two projectors that work through wireless technologies.",
+    3: "This is an auditorium in the FEMSA building. It has a projector, a high-end sound system and a podium.",
+    4.1: "This is the advanced manufacturing lab. It has a semi-automatic and a fully automatic manufacturing machine. Special training is required to operate the machines and to use the classroom."
+}
+
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         document.getElementById("user_div").style.display = "block";
@@ -7,13 +14,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         document.getElementById("user_div").style.display = "none";
         document.getElementById("login_div").style.display = "block";
    }
-
-    var user = firebase.auth().currentUser;
-    if(user != null){
-        var student_id = user.email.substr(0, user.email.indexOf('@'));
-        document.getElementById("user_text").innerHTML = "Welcome to the system " + student_id;
-    }
-
 });
 
 function login(){
@@ -39,12 +39,16 @@ function logout() {
 
 function showClassroomTable(){
     $('#ex-table-sessions').empty();
+    $('#ex-table-classrooms').empty();
+    document.getElementById("user_text").innerHTML = '';
+    document.getElementById("backBTN").style.display = 'none';
+
     var header = '';
     header += '<tr id="tr">';
     header += '<th>Classroom</th>';
-    header += '<th>Maximum Capacity</th>';
     header += '<th>Building</th>';
     header += '<th>Floor</th>';
+    header += '<th>Maximum Capacity</th>';
     $('#ex-table-classrooms').append(header);
     var database = firebase.database();
     database.ref('classrooms').once('value', function(snapshot){
@@ -55,9 +59,9 @@ function showClassroomTable(){
                 content +='<tr>';
                 //content += '<td onClick= showClassroomDetail(2202)>' + val.classroom_code + '</td>';
                 content += '<td onClick= showClassroomDetail('+ val.classroom_code + ')>' + val.classroom_code + '</td>';
-                content += '<td>' + val.quota + '</td>';
                 content += '<td>' + val.building + '</td>';
                 content += '<td>' + val.floor + '</td>';
+                content += '<td>' + val.quota + '</td>';
                 content += '</tr>';
             });
             $('#ex-table-classrooms').append(content);
@@ -67,16 +71,18 @@ function showClassroomTable(){
 
 function showClassroomDetail(classroom_id){
     $('#ex-table-classrooms').empty();
+    $('#ex-table-sessions').empty();
+    document.getElementById("backBTN").style.display = 'block';
     var header = '';
     header += '<tr id="tr">';
     header += '<th>Classroom</th>';
     header += '<th>Date</th>';
-    header += '<th>Motive</th>';
+    header += '<th>Time</th>';
     header += '<th>Teacher</th>';
-    header += '<th>Time end</th>';
-    header += '<th>Time start</th>';
+    header += '<th>Subject</th>';
     $('#ex-table-sessions').append(header);
     var database = firebase.database();
+
     database.ref('sessions').once('value', function(snapshot){
         if(snapshot.exists()){
             var content = '';
@@ -86,14 +92,26 @@ function showClassroomDetail(classroom_id){
                     content +='<tr>';
                     content += '<td>' + val.classroom_code + '</td>';
                     content += '<td>' + val.date + '</td>';
-                    content += '<td>' + val.motive + '</td>';
+                    content += '<td>' + val.time_start + ' - ' + val.time_end + '</td>';
                     content += '<td>' + val.name + '</td>';
-                    content += '<td>' + val.time_end + '</td>';
-                    content += '<td>' + val.time_start + '</td>';
+                    content += '<td>' + val.motive + '</td>';
                     content += '</tr>';
                 }
             });
             $('#ex-table-sessions').append(content);
         }
     });
+
+    database.ref('classrooms').once('value', function(snapshot){
+        if(snapshot.exists()){
+            snapshot.forEach(function(data){
+                var val = data.val();
+                if(val.classroom_code == classroom_id) {
+                    var thisType = val.type;
+                    document.getElementById("user_text").innerHTML = classroomsDict[thisType];
+                }
+            });
+        }
+    });
+
 }

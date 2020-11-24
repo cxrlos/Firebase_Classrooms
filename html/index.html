@@ -25,13 +25,14 @@
         </div>
 
         <div id="user_div" class="loggedin-div">                                      
-            <h3>Welcome User</h3>                                                       
-            <p id="user_text"></p>
-            <table class="container" style="width:100%" id="ex-table-classrooms">
-            </table>
-            <table class="container" style="width:100%" id="ex-table-sessions">
-                <button onclick="showClassroomTable()">Go Back</button>
-            </table>
+            <h3 style="text-align:center">Classroom Scheduling System</h3>                                                       
+            <p style="text-align:center; font-size:80%; font-style:italic;" id="user_text"></p>
+
+            <table class="container" style="width:100%" id="ex-table-classrooms"></table>
+            <table class="container" style="width:100%" id="ex-table-sessions"></table>
+
+            <button id = "backBTN" onclick="showClassroomTable()">Go Back</button>
+            <p></p>
             <button onclick="logout()">Logout</button>                                  
         </div>
 
