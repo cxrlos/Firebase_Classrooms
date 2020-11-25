@@ -24,23 +24,23 @@
             <button onclick="login()">Login</button>
         </div>
         <div class= "loggedin-div">
-            <div style="padding-left: 150px;" id="classrooms">
-            </div>
         </div>
 
-        <div id="user_div" class="loggedin-div">                                      
+        <div style="text-align:center;" id="user_div" class="loggedin-div">                                      
             <h3 style="text-align:center">Classroom Scheduling System</h3>                                                       
             <p style="text-align:center; font-size:80%; font-style:italic;" id="user_text"></p>
+            <div  id="classrooms"></div>
+            <p></p>
 
             <table class="container" style="width:100%" id="ex-table-classrooms"></table>
             <table class="container" style="width:100%" id="ex-table-sessions"></table>
 
-            <button id = "backBTN" onclick="showClassroomTable()">Go Back</button>
+            <button id = "backBTN" onclick="showClassroomTable('All')">Go Back</button>
             <p></p>
             <button onclick="logout()">Logout</button>                                  
         </div>
 
-        <script src="./deps/jquery-3.5.1.min.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>

@@ -42,7 +42,11 @@ function showClassroomTable(value){
     $('#ex-table-sessions').empty();
     $('#ex-table-classrooms').empty();
     document.getElementById("user_text").innerHTML = '';
-    document.getElementById("backBTN").style.display = 'none';
+
+    if(value=='All')
+        document.getElementById("backBTN").style.display = 'none';
+    else
+        document.getElementById("backBTN").style.display = 'block';
 
     var header = '';
     header += '<tr id="tr">';
@@ -120,16 +124,15 @@ function showClassroomDetail(classroom_id){
 }
 
 function showDropdown(){
-    $("#classrooms").append("<h5 >Select Bulding: </h6>");
-    $("#classrooms").append("<select style= 'width: 100px;' id='classrooms_dropdown'> </br>");
-    $("#classrooms_dropdown").append("<option value='All'>All</option>");
+    $("#classrooms").append("<select class = 'dropbtn' id='classrooms_dropdown'></br>");
+    $("#classrooms_dropdown").append("<option value='All'>Building</option>");
     var rootRef = firebase.database().ref().child("classrooms");
     rootRef.on("child_added", snap => {
         var code = snap.child("building").val();
         $("#classrooms_dropdown").append("<option value='"+code+"'>"+code+"</option>");
     });
-    $("#classrooms").append(" </select></div>");
-    $("#classrooms").append("<button style ='padding-right: 100px;' onclick= 'filterClassrooms()'>Search </button>");
+    $("#classrooms").append(" </select></div><p></p>");
+    $("#classrooms").append("<button onclick= 'filterClassrooms()'>Search </button>");
 
 
     

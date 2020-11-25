@@ -130,3 +130,14 @@ input, button, select {
 .container td:nth-child(4),
 .container th:nth-child(4) { display: none; }
 }
+
+.dropbtn {
+  background-color: #23395d;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius:5px;
+}
+
