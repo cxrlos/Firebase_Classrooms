@@ -7,7 +7,7 @@ body {
     color:#ffffff;
 }
 
-input, button {
+input, button, select {
     font-weight: 500;
 }
 

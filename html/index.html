@@ -15,6 +15,7 @@
     </head>
 
     <body>
+        <script src="select.js"></script>
             <img src="https://www.cva.itesm.mx/directorio/images/tec-logo.png" class="center" alt="Logo_Tec_Blanco">
         <div id="login_div" class="main-div">
             <h3 style="text-align:center">Classroom Schedule System</h3>
@@ -22,6 +23,10 @@
             <input type="email" placeholder="Enter your institutional mail", id="email_acc"/>
             <input type="password" placeholder="Enter your password", id="pass_acc"/>
             <button onclick="login()">Login</button>
+        </div>
+        <div class= "loggedin-div">
+            <div style="padding-left: 150px;" id="classrooms">
+            </div>
         </div>
 
         <div id="user_div" class="loggedin-div">                                      

@@ -9,7 +9,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         document.getElementById("user_div").style.display = "block";
         document.getElementById("login_div").style.display = "none";
-        showClassroomTable();
+        showClassroomTable("All");
+        showDropdown();
     } else {
         document.getElementById("user_div").style.display = "none";
         document.getElementById("login_div").style.display = "block";
@@ -37,7 +38,7 @@ function logout() {
     });
 }
 
-function showClassroomTable(){
+function showClassroomTable(value){
     $('#ex-table-sessions').empty();
     $('#ex-table-classrooms').empty();
     document.getElementById("user_text").innerHTML = '';
@@ -56,6 +57,7 @@ function showClassroomTable(){
             var content = '';
             snapshot.forEach(function(data){
                 var val = data.val();
+                if(value == "All" || value==val.building){
                 content +='<tr>';
                 //content += '<td onClick= showClassroomDetail(2202)>' + val.classroom_code + '</td>';
                 content += '<td onClick= showClassroomDetail('+ val.classroom_code + ')>' + val.classroom_code + '</td>';
@@ -63,6 +65,7 @@ function showClassroomTable(){
                 content += '<td>' + val.floor + '</td>';
                 content += '<td>' + val.quota + '</td>';
                 content += '</tr>';
+                }
             });
             $('#ex-table-classrooms').append(content);
         }
@@ -114,4 +117,26 @@ function showClassroomDetail(classroom_id){
         }
     });
 
+}
+
+function showDropdown(){
+    $("#classrooms").append("<h5 >Select Bulding: </h6>");
+    $("#classrooms").append("<select style= 'width: 100px;' id='classrooms_dropdown'> </br>");
+    $("#classrooms_dropdown").append("<option value='All'>All</option>");
+    var rootRef = firebase.database().ref().child("classrooms");
+    rootRef.on("child_added", snap => {
+        var code = snap.child("building").val();
+        $("#classrooms_dropdown").append("<option value='"+code+"'>"+code+"</option>");
+    });
+    $("#classrooms").append(" </select></div>");
+    $("#classrooms").append("<button style ='padding-right: 100px;' onclick= 'filterClassrooms()'>Search </button>");
+
+
+    
+}
+
+function filterClassrooms(){
+    let filter = document.getElementById("classrooms_dropdown");
+    console.log(filter.value);
+    showClassroomTable(filter.value);
 }
