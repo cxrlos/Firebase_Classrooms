@@ -17,6 +17,16 @@ Our proof of concept shows the functionality of students on the system:
 ## What was used?
 Throughout the project we stated the system was going to be hosted on AWS, and that still stands because we believe that platform can ensure many quality attributes are achieved. But, for the Proof Of Concept we found it to be more convinient to use firebase since it is a very simple platform. 
 
+## Login Credentials
+
+To test the system, use the following credentials to login.
+
+| USER              | PASS    |
+| ----------------- | ------- |
+| A0100000@itesm.mx | Pirlo21 |
+
+
+
 
 ## Dependencies
 - jquery-3.5.1.min.js
